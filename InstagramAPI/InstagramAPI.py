@@ -36,16 +36,6 @@ except:
 
 
 class InstagramAPI:
-    # username            # Instagram username
-    # password            # Instagram password
-    # debug               # Debug
-    # uuid                # UUID
-    # device_id           # Device ID
-    # username_id         # Username ID
-    # token               # _csrftoken
-    # isLoggedIn          # Session status
-    # rank_token          # Rank token
-
     def __init__(self, username, password):
         m = hashlib.md5()
         m.update(username.encode('utf-8') + password.encode('utf-8'))

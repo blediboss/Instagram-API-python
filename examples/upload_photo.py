@@ -10,4 +10,4 @@ InstagramAPI.login()  # login
 
 photo_path = '/path/to/photo.jpg'
 caption = "Sample photo"
-InstagramAPI.uploadPhoto(photo_path, caption=caption)
+InstagramAPI.upload_photo(photo_path, caption=caption)

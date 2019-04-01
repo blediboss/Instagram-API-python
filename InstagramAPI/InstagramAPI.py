@@ -223,6 +223,7 @@ class InstagramAPI:
             '_uid': self.username_id,
             'caption': caption,
         })
+        clip.close()
         return self.send_request('media/configure/?video=1', self.generate_signature(data))
 
     def configure(self, upload_id, photo, caption=''):

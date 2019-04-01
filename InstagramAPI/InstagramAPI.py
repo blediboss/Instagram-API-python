@@ -93,6 +93,24 @@ class InstagramAPI:
     def logout(self):
         self.send_request('accounts/logout/')
 
+    def load_session(self, filepath):
+        with open(filepath) as session_file:
+            self.s.cookies = requests.cookies.cookiejar_from_dict(
+                json.load(session_file))
+
+            # TODO: Check if loaded session is valid.
+            self.isLoggedIn = True
+            self.username = self.s.cookies['ds_user']
+            self.username_id = self.s.cookies['ds_user_id']
+            self.rank_token = "%s_%s" % (self.username_id, self.uuid)
+            self.token = self.s.cookies["csrftoken"]
+
+            # self.sync()
+
+    def save_session(self, file_path):
+        with open(file_path, 'w') as session_file:
+            json.dump(requests.cookies.dict_from_cookiejar(self.s.cookies), session_file)
+
     def sync_features(self):
         data = json.dumps({'_uuid': self.uuid,
                            '_uid': self.username_id,
